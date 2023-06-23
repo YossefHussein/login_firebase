@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:singin_firebase/auth.dart';
+import 'package:singin_firebase/screen/home_screen.dart';
+import 'package:singin_firebase/screen/login_screen.dart';
+import 'package:singin_firebase/screen/signup_screen.dart';
 
 void main(List<String> args) async {
   // this for if main function is async willing return screen
@@ -25,7 +28,14 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Auth(),
+      // home: Auth(),
+      initialRoute: '/',
+      routes: {
+        '/' : (context) => Auth(),
+        'homeScreen' : (context) => HomeScreen(),
+        'singupScreen' : (context) => SignUpScreen(),
+        'loginScreen' : (context) => LoginScreen(),
+      },
     );
   }
 }

@@ -129,11 +129,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(width: 5),
-                    Text(
-                      'make new account ',
-                      style: GoogleFonts.robotoCondensed(
-                        color: Colors.green,
-                        fontWeight: FontWeight.w600,
+                    GestureDetector(
+                      onTap: openSignUpScreen,
+                      child: Text(
+                        'make new account ',
+                        style: GoogleFonts.robotoCondensed(
+                          color: Colors.green,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ],
@@ -154,5 +157,9 @@ class _LoginScreenState extends State<LoginScreen> {
       email: emailController.text.trim(),
       password: passwordController.text.trim(),
     );
+  }
+
+  void openSignUpScreen(){
+    Navigator.pushReplacementNamed(context, 'singupScreen');
   }
 }

@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -22,17 +21,17 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Text(
                 'Hello, You are logIn, \n ${user?.email}',
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
               ),
               MaterialButton(
-                child: const Text('logOut'),
                 onPressed: () {
                   FirebaseAuth.instance.signOut();
                 },
                 color: Colors.amber[900],
+                child:   const Text('logOut'),
               )
             ],
           ),
