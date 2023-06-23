@@ -36,29 +36,27 @@ Widget buttonWidget({
   required GestureTapCallback? onTap,
   required String? title,
 }) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(
-      horizontal: 20,
-    ),
-    child: GestureDetector(
+  return GestureDetector(
+    onTap: () {
+      onTap!();
+    },
+    child: Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
+      ),
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: pColorButton,
           borderRadius: BorderRadius.circular(12),
         ),
-        child: GestureDetector(
-          onTap: () {
-            onTap!();
-          },
-          child: Center(
-            child: Text(
-              '${title?.toUpperCase()}',
-              style: GoogleFonts.robotoCondensed(
-                fontSize: 20,
-                color: Colors.white,
-                fontWeight: FontWeight.w600,
-              ),
+        child: Center(
+          child: Text(
+            '${title?.toUpperCase()}',
+            style: GoogleFonts.robotoCondensed(
+              fontSize: 20,
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),

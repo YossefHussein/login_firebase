@@ -87,7 +87,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       onTap: () {
                         cubit.signUp(context);
                       },
-                      title: 'signUp',
+                      title: 'signup',
                     ),
                     const SizedBox(height: 10),
                     Row(

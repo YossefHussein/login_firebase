@@ -90,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         SizedBox(width: 5),
                         GestureDetector(
-                          onTap: ()=> cubit.openSignUpScreen(context: context),
+                          onTap: () => cubit.openSignUpScreen(context: context),
                           child: Text(
                             'make new account :) ',
                             style: GoogleFonts.robotoCondensed(
