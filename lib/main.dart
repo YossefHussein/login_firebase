@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
-import 'package:singin_firebase/auth.dart';
-import 'package:singin_firebase/screen/home_screen.dart';
-import 'package:singin_firebase/screen/login_screen.dart';
-import 'package:singin_firebase/screen/signup_screen.dart';
+import 'auth.dart';
+import 'view/home_screen.dart';
+import 'view/login_screen.dart';
+import 'view/signup_screen.dart';
 
 void main(List<String> args) async {
   // this for if main function is async willing return screen

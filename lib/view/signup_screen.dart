@@ -2,6 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'ui/styles/colors.dart';
+import 'ui/widgets/widgets.dart';
+
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
@@ -35,8 +38,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
         password: _passwordController.text.trim(),
       );
       Navigator.pushNamed(context, '/');
-      return true;
     } else {
+      notPasswordMatch();
       return false;
     }
   }
@@ -74,87 +77,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 10),
                 // this textfield for email
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: TextField(
-                      controller: _emailController,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Email',
-                      ),
-                    ),
-                  ),
+                textFieldWidget(
+                  controller: _emailController,
+                  hintText: 'email',
                 ),
                 const SizedBox(height: 10),
 
-                /// this for password
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: TextField(
-                      obscureText: true,
-                      controller: _passwordController,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Password',
-                      ),
-                    ),
-                  ),
-                ),
+                /// this for confirm password
+                textFieldWidget(
+                    controller: _confirmPasswordController,
+                    hintText: 'password',
+                    isPassword: true),
                 const SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: TextField(
-                      obscureText: true,
-                      controller: _confirmPasswordController,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Confirm Password',
-                      ),
-                    ),
-                  ),
-                ),
+                textFieldWidget(
+                    controller: _passwordController,
+                    hintText: 'confirm password',
+                    isPassword: true),
                 const SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                  ),
-                  child: GestureDetector(
-                    child: Container(
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Colors.amber[900],
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: GestureDetector(
-                        onTap: signUp,
-                        child: Center(
-                          child: Text(
-                            'SIGN UP',
-                            style: GoogleFonts.robotoCondensed(
-                              fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                // button for sign up
+                buttonWidget(
+                  onTap: signUp,
+                  title: 'signUp',
                 ),
                 const SizedBox(height: 10),
                 Row(
