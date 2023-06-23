@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,6 +10,7 @@ import 'ui/widgets/widgets.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -90,9 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         SizedBox(width: 5),
                         GestureDetector(
-                          onTap: () {
-                            cubit.openSignUpScreen;
-                          },
+                          onTap: ()=> cubit.openSignUpScreen(context: context),
                           child: Text(
                             'make new account :) ',
                             style: GoogleFonts.robotoCondensed(

@@ -23,7 +23,7 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
 // go to sign up screen if user doesn't have account
-  void openSignUpScreen(BuildContext context) {
+  void openSignUpScreen({required BuildContext context}) {
     Navigator.pushReplacementNamed(context, 'singupScreen');
   }
 }
