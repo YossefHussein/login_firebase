@@ -3,7 +3,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'auth.dart';
+import 'controller/login_cubit.dart';
+import 'controller/signup_cubit.dart';
 import 'view/home_screen.dart';
 import 'view/login_screen.dart';
 import 'view/signup_screen.dart';
@@ -15,7 +18,7 @@ void main(List<String> args) async {
   await Firebase.initializeApp();
   runApp(MyApp());
 }
- 
+
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -26,16 +29,25 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      // home: Auth(),
-      initialRoute: '/',
-      routes: {
-        '/' : (context) => Auth(),
-        'homeScreen' : (context) => HomeScreen(),
-        'singupScreen' : (context) => SignUpScreen(),
-        'loginScreen' : (context) => LoginScreen(),
-      },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => SignUpCubit(),
+        ),
+        BlocProvider(
+          create: (context) => LoginCubit(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/',
+        routes: {
+          '/': (context) => Auth(),
+          'homeScreen': (context) => HomeScreen(),
+          'singupScreen': (context) => SignUpScreen(),
+          'loginScreen': (context) => LoginScreen(),
+        },
+      ),
     );
   }
 }

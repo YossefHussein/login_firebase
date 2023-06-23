@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,6 +10,7 @@ Widget textFieldWidget({
   bool isPassword = false,
   required TextEditingController controller,
   required String? hintText,
+  required TextInputType type,
 }) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -20,6 +22,7 @@ Widget textFieldWidget({
       child: TextField(
         obscureText: isPassword,
         controller: controller,
+        keyboardType: type,
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: hintText?.toUpperCase(),
@@ -64,13 +67,15 @@ Widget buttonWidget({
     ),
   );
 }
-Future<bool?> notPasswordMatch() async {
- return Fluttertoast.showToast(
-      msg: "password is not match",
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.CENTER,
-      timeInSecForIosWeb: 1,
-      backgroundColor: pToastButton,
-      textColor: Colors.white,
-      fontSize: 16.0);
+
+notPasswordMatch() async {
+  return Fluttertoast.showToast(
+    msg: "password is not match",
+    toastLength: Toast.LENGTH_SHORT,
+    gravity: ToastGravity.CENTER,
+    timeInSecForIosWeb: 1,
+    backgroundColor: pToastButton,
+    textColor: Colors.white,
+    fontSize: 16.0,
+  );
 }
