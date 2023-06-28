@@ -14,16 +14,21 @@ class LoginCubit extends Cubit<LoginState> {
 
   // login on app by firebase
   Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
+    await FirebaseAuth.instance
+        .signInWithEmailAndPassword(
       // this for give data from field and move to firebase
       // 'trim()' mean give me text without this '
       email: emailController.text.trim(),
       password: passwordController.text.trim(),
-    );
+    )
+        .then((value) {
+      emit(SignInState());
+    });
   }
 
 // go to sign up screen if user doesn't have account
   void openSignUpScreen({required BuildContext context}) {
     Navigator.pushReplacementNamed(context, 'singupScreen');
+    emit(OpenSignUpScreen());
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -65,8 +67,8 @@ Widget buttonWidget({
   );
 }
 
-notPasswordMatch() async {
-  return Fluttertoast.showToast(
+Future<bool?> notPasswordMatch() async {
+  return await Fluttertoast.showToast(
     msg: "password is not match",
     toastLength: Toast.LENGTH_SHORT,
     gravity: ToastGravity.CENTER,

@@ -30,9 +30,12 @@ class SignUpCubit extends Cubit<SingUpState> {
       );
       // this for go to auth screen
       Navigator.pushNamed(context, '/');
+      emit(SignUpIsMatchState());
     } else {
       // this is password is not match
-      notPasswordMatch();
+      notPasswordMatch().then((value) {
+        emit(SignUpIsNotMatch());
+      });
       return false;
     }
   }
